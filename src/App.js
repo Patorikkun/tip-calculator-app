@@ -1,12 +1,14 @@
-import React from 'react'
-import Calculator from './Calculator';
-import GlobalStyles from './GlobalStyles';
+import React from "react";
+import Calculator from "./Calculator";
+import GlobalStyles from "./GlobalStyles";
 
+import Heading from "./Heading";
 function App() {
   return (
     <div className="App">
       <GlobalStyles></GlobalStyles>
-     <Calculator></Calculator>
+      <Heading></Heading>
+      <Calculator></Calculator>
     </div>
   );
 }

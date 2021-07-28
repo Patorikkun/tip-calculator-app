@@ -1,24 +1,65 @@
-import React from 'react';
-import styled from 'styled-components';
-
-
+import React from "react";
+import styled from "styled-components";
+import Reset from "./Reset";
 const Totals = () => {
-    return(<StyledTotals>
-       
-    </StyledTotals>)
-}
+  return (
+    <StyledSection>
+      <TotalContainer>
+        <Label>
+          Tip Amount<SubLabel>/ person</SubLabel>
+        </Label>
 
+        <Amount>$0.00</Amount>
+      </TotalContainer>
+      <TotalContainer>
+        <Label>
+          Total<SubLabel>/ person</SubLabel>
+        </Label>
 
+        <Amount>$0.00</Amount>
+      </TotalContainer>
 
-const StyledTotals = styled.section`
-height: 88%;
-width: 45%;
-border-radius: 1em;
-background: hsl(183, 100%, 15%);
+      <Reset></Reset>
+    </StyledSection>
+  );
+};
+
+const StyledSection = styled.section`
+  height: 88%;
+  width: 45%;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: hsl(183, 100%, 15%);
 `;
 
+const TotalContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 20%;
+  width: 75%;
 
+  &:nth-of-type(2) {
+    margin-top: -5em;
+  }
+`;
+const Label = styled.h4`
+  color: hsl(189, 41%, 97%);
+  font-weight: 700;
+`;
 
+const SubLabel = styled.h5`
+  color: hsl(184, 14%, 56%);
+  font-weight: 700;
+`;
 
+const Amount = styled.span`
+  color: hsl(172, 67%, 45%);
+  font-size: 3rem;
+  font-weight: 700;
+`;
 
 export default Totals;

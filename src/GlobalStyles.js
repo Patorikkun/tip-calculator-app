@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-
 const GlobalStyles = createGlobalStyle`
 
 
@@ -18,10 +17,10 @@ const GlobalStyles = createGlobalStyle`
    background: hsl(185, 41%, 84%);
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   justify-content: space-evenly;
    align-items: center;
+   
 }
 `;
-
 
 export default GlobalStyles;
