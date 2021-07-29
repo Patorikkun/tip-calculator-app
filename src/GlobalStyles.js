@@ -19,7 +19,9 @@ const GlobalStyles = createGlobalStyle`
    flex-direction: column;
    justify-content: space-evenly;
    align-items: center;
-   
+   @media only screen and (min-width: 375px) and (max-width: 769px) {
+    justify-content: space-between;
+  }
 }
 `;
 

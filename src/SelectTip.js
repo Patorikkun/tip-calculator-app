@@ -34,6 +34,10 @@ const StyledContainer = styled.div`
   gap: 1em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+
+  @media only screen and (min-width: 375px) and (max-width: 769px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const StyledTip = styled.input`
@@ -128,6 +132,17 @@ const StyledTip = styled.input`
 
     :-ms-input-placeholder {
       text-align: center;
+    }
+
+    @media only screen and (min-width: 375px) and (max-width: 769px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media only screen and (min-width: 375px) and (max-width: 769px) {
+    height: 3.75em;
+    &:after {
+      font-size: 1.75rem;
     }
   }
 `;

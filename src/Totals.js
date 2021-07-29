@@ -33,6 +33,11 @@ const StyledSection = styled.section`
   justify-content: space-around;
   align-items: center;
   background: hsl(183, 100%, 15%);
+
+  @media only screen and (min-width: 375px) and (max-width: 769px) {
+    height: 35%;
+    width: 80%;
+  }
 `;
 
 const TotalContainer = styled.div`
@@ -44,6 +49,13 @@ const TotalContainer = styled.div`
 
   &:nth-of-type(2) {
     margin-top: -5em;
+  }
+
+  @media only screen and (min-width: 375px) and (max-width: 769px) {
+    width: 85%;
+    &:nth-of-type(2) {
+      margin-top: -2.5em;
+    }
   }
 `;
 const Label = styled.h4`

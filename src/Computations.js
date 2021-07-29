@@ -30,6 +30,12 @@ const StyledComputations = styled.section`
   justify-content: space-between;
   align-items: center;
   position: relative;
+
+  @media only screen and (min-width: 375px) and (max-width: 769px) {
+    width: 80%;
+    height: 60%;
+    justify-content: space-evenly;
+  }
 `;
 
 const OptionContainer = styled.div`
