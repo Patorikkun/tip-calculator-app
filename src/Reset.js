@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const Reset = () => {
-  return <StyledReset>RESET</StyledReset>;
+const Reset = ({ resetHandler }) => {
+  return <StyledReset onClick={resetHandler}>RESET</StyledReset>;
 };
 
 const StyledReset = styled.button`

@@ -1,23 +1,57 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const SelectTip = () => {
-  const [customTip, setCustomTip] = useState();
+const SelectTip = ({
+  customTip,
+  setCustomTip,
+  selectedTip,
+  setSelectedTip,
+}) => {
+  const tipArray = [0.05, 0.1, 0.15, 0.25, 0.5];
+
+  const selectedTipCount = Object.keys(selectedTip).filter(
+    (key) => selectedTip[key]
+  ).length; //tracks the length of selected tip option
+
+  const disabled = selectedTipCount > 1; //disables unselected tips
+
+  const onChangeSelectedTip = (index) => {
+    setSelectedTip((prev) => ({
+      checked: {
+        [index]: !prev.checked[index],
+      },
+    }));
+  };
+
+  const changeHandler = (tip, index) => {
+    setCustomTip(tip);
+    onChangeSelectedTip(index);
+  };
 
   return (
     <StyledContainer>
-      <StyledTip type="checkbox"></StyledTip>
-      <StyledTip type="checkbox"></StyledTip>
-      <StyledTip type="checkbox"></StyledTip>
-      <StyledTip type="checkbox"></StyledTip>
-      <StyledTip type="checkbox"></StyledTip>
+      {tipArray.map((tip, index) => (
+        <StyledTip
+          key={index}
+          type="checkbox"
+          onChange={() => changeHandler(tip, index)}
+          checked={selectedTip[index] || false}
+          disabled={!selectedTip[index] && disabled}
+          style={
+            selectedTip.checked[index] === true
+              ? { backgroundColor: "hsl(172, 67%, 45%)" }
+              : null
+          }
+        ></StyledTip>
+      ))}
+
       <StyledTip
         type="tel"
         min="0"
         max="99"
         maxLength="2"
         placeholder="Custom"
-        onChange={(event) => setCustomTip(event.target.value)}
+        onChange={(event) => setCustomTip(event.target.value / 100)}
         style={
           customTip == null || customTip == ""
             ? { padding: 0 }

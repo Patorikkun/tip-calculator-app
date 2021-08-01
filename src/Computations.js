@@ -1,22 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Bill from "./Bill";
 import SelectTip from "./SelectTip";
 import PeopleNum from "./PeopleNum";
-const Computations = () => {
+
+const Computations = ({
+  billAmount,
+  customTip,
+  numPeople,
+  tipAmount,
+  totalAmount,
+  setTotalAmount,
+  setBillAmount,
+  setCustomTip,
+  setNumPeople,
+  setTipAmount,
+  resetFields,
+  selectedTip,
+  setSelectedTip,
+}) => {
+  const tipAmountCompute = (billAmount * customTip) / numPeople;
+  const totalAmountCompute = billAmount / numPeople + tipAmountCompute;
+  useEffect(() => {
+    setTipAmount(Math.round((tipAmountCompute + Number.EPSILON) * 100) / 100); // 2 decimal places
+
+    setTotalAmount(
+      Math.round((totalAmountCompute + Number.EPSILON) * 100) / 100
+    );
+  });
+
   return (
     <StyledComputations>
       <OptionContainer>
         <Label>Bill</Label>
-        <Bill></Bill>
+        <Bill
+          billAmount={billAmount}
+          setBillAmount={setBillAmount}
+          resetFields={resetFields}
+        ></Bill>
       </OptionContainer>
       <OptionContainer>
         <Label>Select Tip %</Label>
-        <SelectTip></SelectTip>
+        <SelectTip
+          resetFields={resetFields}
+          customTip={customTip}
+          setCustomTip={setCustomTip}
+          selectedTip={selectedTip}
+          setSelectedTip={setSelectedTip}
+        ></SelectTip>
       </OptionContainer>
       <OptionContainer>
         <Label>Number of People</Label>
-        <PeopleNum></PeopleNum>
+        <PeopleNum
+          numPeople={numPeople}
+          setNumPeople={setNumPeople}
+        ></PeopleNum>
       </OptionContainer>
     </StyledComputations>
   );

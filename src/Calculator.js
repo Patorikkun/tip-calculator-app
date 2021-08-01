@@ -1,13 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Computations from "./Computations";
 import Totals from "./Totals";
 
 const Calculator = () => {
+  const [billAmount, setBillAmount] = useState("");
+
+  const [customTip, setCustomTip] = useState("");
+
+  const [numPeople, setNumPeople] = useState("");
+
+  const [tipAmount, setTipAmount] = useState("");
+
+  const [totalAmount, setTotalAmount] = useState("");
+
+  const [resetFields, setResetFields] = useState(false);
+
+  const [selectedTip, setSelectedTip] = useState({ checked: {} });
+
+  const resetHandler = () => {
+    setResetFields(!resetFields);
+    setBillAmount("");
+    setCustomTip("");
+    setNumPeople("");
+    setTotalAmount("");
+    setTipAmount("");
+    setSelectedTip({ checked: {} });
+  };
+
   return (
     <StyledCalculator>
-      <Computations></Computations>
-      <Totals></Totals>
+      <Computations
+        billAmount={billAmount}
+        customTip={customTip}
+        numPeople={numPeople}
+        tipAmount={tipAmount}
+        totalAmount={totalAmount}
+        setTotalAmount={setTotalAmount}
+        setBillAmount={setBillAmount}
+        setCustomTip={setCustomTip}
+        setNumPeople={setNumPeople}
+        setTipAmount={setTipAmount}
+        resetFields={resetFields}
+        selectedTip={selectedTip}
+        setSelectedTip={setSelectedTip}
+      ></Computations>
+
+      <Totals
+        tipAmount={tipAmount}
+        totalAmount={totalAmount}
+        resetHandler={resetHandler}
+      ></Totals>
     </StyledCalculator>
   );
 };

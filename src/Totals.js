@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Reset from "./Reset";
-const Totals = () => {
+const Totals = ({ totalAmount, tipAmount, resetHandler }) => {
   return (
     <StyledSection>
       <TotalContainer>
@@ -9,17 +9,21 @@ const Totals = () => {
           Tip Amount<SubLabel>/ person</SubLabel>
         </Label>
 
-        <Amount>$0.00</Amount>
+        <Amount>
+          {!tipAmount || tipAmount == Infinity ? "0.00" : tipAmount}
+        </Amount>
       </TotalContainer>
       <TotalContainer>
         <Label>
           Total<SubLabel>/ person</SubLabel>
         </Label>
 
-        <Amount>$0.00</Amount>
+        <Amount>
+          {!totalAmount || totalAmount == Infinity ? "0.00" : totalAmount}
+        </Amount>
       </TotalContainer>
 
-      <Reset></Reset>
+      <Reset resetHandler={resetHandler}></Reset>
     </StyledSection>
   );
 };
@@ -63,7 +67,7 @@ const Label = styled.h4`
   font-weight: 700;
 `;
 
-const SubLabel = styled.h5`
+const SubLabel = styled.p`
   color: hsl(184, 14%, 56%);
   font-weight: 700;
 `;

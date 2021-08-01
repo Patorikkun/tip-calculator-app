@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Label from "./DollarIcon";
 
-const Bill = () => {
+const Bill = ({ billAmount, setBillAmount, resetFields }) => {
   return (
     <Container>
-      <StyledBill type="number"></StyledBill>
+      <StyledBill
+        type="number"
+        className="clear-on-reset"
+        value={billAmount}
+        onChange={(event) => setBillAmount(event.target.value)}
+      ></StyledBill>
       <Label></Label>
     </Container>
   );

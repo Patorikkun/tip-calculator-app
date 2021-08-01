@@ -2,10 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import Label from "./PeopleIcon";
 
-const PeopleNum = () => {
+const PeopleNum = ({ numPeople, setNumPeople }) => {
   return (
     <Container>
-      <StyledPeopleNum type="number"></StyledPeopleNum>
+      <StyledPeopleNum
+        type="number"
+        value={numPeople}
+        onChange={(event) => setNumPeople(event.target.value)}
+      ></StyledPeopleNum>
       <Label></Label>
     </Container>
   );
