@@ -53,7 +53,8 @@ const SelectTip = ({
         placeholder="Custom"
         onChange={(event) => setCustomTip(event.target.value / 100)}
         style={
-          customTip == null || customTip == ""
+          (customTip == null && !selectedTip) ||
+          (customTip == "" && !selectedTip)
             ? { padding: 0 }
             : { padding: " 0.25em 0.75em 0.25em 1.5em " }
         }
